@@ -10,6 +10,14 @@ interface Todo {
   createdAt: Date;
 }
 
+// Define a type for the stored todo item
+interface StoredTodo {
+  id: string;
+  text: string;
+  completed: boolean;
+  createdAt: string; // Date stored as string in JSON
+}
+
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -23,7 +31,7 @@ export default function Home() {
     if (storedTodos) {
       try {
         // Parse the stored JSON and convert string dates back to Date objects
-        const parsedTodos = JSON.parse(storedTodos).map((todo: any) => ({
+        const parsedTodos = JSON.parse(storedTodos).map((todo: StoredTodo) => ({
           ...todo,
           createdAt: new Date(todo.createdAt)
         }));
