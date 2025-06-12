@@ -132,10 +132,15 @@ export default function Home() {
               onKeyDown={(e) => e.key === 'Enter' && addTodo()}
               placeholder="Add a new task..."
               className="flex-grow p-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              aria-label="Add a new task"
+              id="new-task-input"
+              autoComplete="off"
+              style={{ zIndex: 10 }}
             />
             <button
               onClick={addTodo}
               className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-md transition-colors"
+              aria-label="Add task"
             >
               Add
             </button>
